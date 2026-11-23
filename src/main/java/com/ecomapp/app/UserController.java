@@ -1,25 +1,41 @@
+
 package com.ecomapp.app;
+
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
+
 @RestController
 @RequiredArgsConstructor
 public class UserController {
-    private final UserService userservice;
+
+    private final UserService userService;
     private long nextId = 1L;
 
+    // GET: Fetch all users
     @GetMapping("/api/users")
-    public List<User> getAllUsers(){
-        return userservice.FetchAllUsers();
+    public ResponseEntity<List<User>> getAllUsers() {
+
+        return ResponseEntity.ok(userService.FetchAllUsers());
     }
+
+    // POST: Create a new user
     @PostMapping("/api/users")
-    public void createUsers(@RequestBody User user){
+    public ResponseEntity<User> createUsers(@RequestBody User user) {
+
         user.setId(nextId++);
-        userservice.AddUsers(user);
+
+        userService.AddUsers(user);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }
+
     @GetMapping("/api/users/{id}")
-    public User getAllUsers(@PathVariable Long id){
-        return userservice.fetchUser(id);
+    public ResponseEntity<Optional<User>> getAllUsers(@PathVariable Long id) {
+        return ResponseEntity.ok(userService.fetchUser(id));
     }
 }
