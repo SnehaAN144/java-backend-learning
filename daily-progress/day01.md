@@ -300,7 +300,7 @@ public class UserController {
 1. Understood the basic structure of a Spring Boot application.
 2. Learned how REST controllers handle HTTP requests.
 3. Understood `@RequestBody` and JSON mapping.
-4. Implemented GET and POST endpoints.
+4. Implemented GET and POST endpoints
 5. Understood Controller and Service layer separation.
 6. Practiced Dependency Injection and Constructor Injection.
 7. Implemented automatic user ID generation.
