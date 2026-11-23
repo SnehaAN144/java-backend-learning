@@ -1,10 +1,6 @@
 package com.ecomapp.app;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 @RestController
@@ -21,5 +17,9 @@ public class UserController {
     public void createUsers(@RequestBody User user){
         user.setId(nextId++);
         userservice.AddUsers(user);
+    }
+    @GetMapping("/api/users/{id}")
+    public User getAllUsers(@PathVariable Long id){
+        return userservice.fetchUser(id);
     }
 }
