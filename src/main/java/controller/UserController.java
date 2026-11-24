@@ -1,6 +1,8 @@
 
-package com.ecomapp.app;
+package controller;
 
+import model.User;
+import service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +16,7 @@ import java.util.Optional;
 public class UserController {
 
     private final UserService userService;
-    private long nextId = 1L;
+//    private long nextId = 1L;
 
     // GET: Fetch all users
     @GetMapping("/api/users")
@@ -27,7 +29,7 @@ public class UserController {
     @PostMapping("/api/users")
     public ResponseEntity<User> createUsers(@RequestBody User user) {
 
-        user.setId(nextId++);
+//        user.setId(nextId++);
 
         userService.AddUsers(user);
 
