@@ -1,6 +1,8 @@
-package com.ecomapp.app;
+package service;
 import java.util.*;
 
+import model.User;
+import repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
     private final UserRepository userRepository;
 //    private List<User> userList = new ArrayList<>();
-    private Long nextId=1L;
+//    private Long nextId=1L;
 
     public List<User> FetchAllUsers() {
         return userRepository.findAll();
