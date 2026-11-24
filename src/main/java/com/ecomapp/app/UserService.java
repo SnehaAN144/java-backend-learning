@@ -26,14 +26,12 @@ public class UserService {
         return userRepository.findById(id);
     }
     public boolean updateUser(Long id, User updatedUser) {
-        return userList.stream()
-                .filter(user -> user.getId().equals(id))
-                .findFirst()
+        return userRepository.findById(id)
                 .map(existingUser -> {
                     existingUser.setFirstName(updatedUser.getFirstName());
                     existingUser.setLastName(updatedUser.getLastName());
+                    userRepository.save(existingUser);
                     return true;
-                })
-                .orElse(false);
+                }).orElse(false);
     }
 }
