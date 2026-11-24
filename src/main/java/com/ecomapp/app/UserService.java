@@ -18,9 +18,8 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public List<User> AddUsers(User user) {
-        userList.add(user);
-        return userList;
+    public void AddUsers(User user) {
+        userRepository.save(user);
     }
 
     public Optional<User> fetchUser(Long id) {
