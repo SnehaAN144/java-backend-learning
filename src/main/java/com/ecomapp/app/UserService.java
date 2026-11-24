@@ -4,7 +4,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
+    private final UserRepository userRepository;
     private List<User> userList = new ArrayList<>();
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public List<User> FetchAllUsers() {
         return userList;
