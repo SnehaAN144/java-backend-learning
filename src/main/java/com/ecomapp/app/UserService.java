@@ -23,9 +23,7 @@ public class UserService {
     }
 
     public Optional<User> fetchUser(Long id) {
-        return userList.stream()
-                .filter(user -> user.getId().equals(id))
-                .findFirst();
+        return userRepository.findById(id);
     }
     public boolean updateUser(Long id, User updatedUser) {
         return userList.stream()
